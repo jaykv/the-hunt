@@ -10,7 +10,6 @@ app.use(bodyParser.json());
 app.use(methodOverride());
 app.use(cors());
 
-<<<<<<< HEAD
 app.get('/jobs', function(req, res) {
 
     res.json([ 
@@ -67,11 +66,6 @@ app.get('/employers', function(req, res) {
     		"success": true
     	}
     ]);
-=======
-app.get('/posts', function(req, res) {
-
-    res.json({"success": true});
->>>>>>> a58a6ef2ff2dfcf23b27c393269943e38f4e4f4b
 
 });
 

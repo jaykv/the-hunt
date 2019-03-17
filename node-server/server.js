@@ -1,3 +1,5 @@
+require('dotenv').config()
+
 var express = require('express');
 var bodyParser = require('body-parser');
 var logger = require('morgan');
@@ -11,71 +13,41 @@ app.use(methodOverride());
 app.use(cors());
 
 const MongoClient = require('mongodb').MongoClient;
-const uri = "mongodb+srv://root:<password>@dragonchatbot-mpbdy.gcp.mongodb.net/test?retryWrites=true";
+const uri = process.env.DB_URI;
 const client = new MongoClient(uri, { useNewUrlParser: true });
+
 client.connect(err => {
-  const collection = client.db("test").collection("devices");
-  // perform actions on the collection object
-  console.log(collection);
-  client.close();
+  const db = client.db('dragontinder');  
+  hunterCollection = db.collection('hunters');
+  seekerCollection = db.collection('seekers');
+  huntCollection = db.collection('hunts');
 });
 
-
-app.get('/jobs', function(req, res) {
-
-    res.json([ 
-    	{
-    		"company": 'geico', 
-    		"job-name": 'babysitter', 
-    		"description": 'do stuff', 
-    		"recruiter": 'bob smith'
-    	},
-
-    	{
-
-    	},
-
-    ]);
+app.get('/hunts', function(req, res) {
+    huntCollection.find().toArray(function(err, hunts) {
+      res.json(hunts);
+    });
 });
 
-app.get('/companies', function(req, res) {
-
-    res.json([
-    	{
-    		"name": 'geico',
-    		"main-recruiter": 'bob smith',
-    	},
-    ]);
+app.get('/seekers', function(req, res) {
+    seekerCollection.find().toArray(function(err, seekers) {
+      res.json(seekers);
+    });
 
 });
 
-app.get('/employees', function(req, res) {
-
-    res.json([
-    	{
-    		"name": 'john porter',
-    		"gpa": 3.9,
-    		"address": '',
-    		"phone": '',
-    		"bio": '',
-    		"major": '',
-    		"university": '',
-    		"github": '',
-    		"linkedin": ''
-    	}
-    ]);
-
+app.get('/hunters', function(req, res) {
+    hunterCollection.find().toArray(function(err, hunters) {
+      res.json(hunters);
+    });
 });
-
 
 app.get('/employers', function(req, res) {
-
     res.json([
-    	{
-    		"success": true
-    	}
+      {
+        "success": true
+      }
     ]);
-
 });
 
 app.listen(process.env.PORT || 8080);

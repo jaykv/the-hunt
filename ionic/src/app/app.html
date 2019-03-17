@@ -1,0 +1,46 @@
+<ion-menu [content]="mainContent">
+  <ion-header>
+    <ion-toolbar>
+      <ion-title></ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content id="side-menu21" style="background-color:#FFFFFF;">
+    <ion-list id="side-menu21-list3">
+      <ion-item color="none" menuClose="" on-click="goToWelcome()" id="side-menu21-list-item5">
+        <ion-icon name="home" item-left></ion-icon>
+        Home
+      </ion-item>
+      <ion-item color="dark" menuClose="" on-click="goToYou()" id="side-menu21-list-item2">
+        <ion-icon name="person" item-left></ion-icon>
+        Profile
+      </ion-item>
+      <ion-item color="dark" menuClose="" on-click="goToPreferences()" id="side-menu21-list-item3">
+        <ion-icon name="stats" item-left></ion-icon>
+        Preferences
+      </ion-item>
+      <ion-item color="none" menuClose="" on-click="goToJobs()" id="side-menu21-list-item9">
+        <ion-icon name="bowtie" item-left></ion-icon>
+        Jobs
+      </ion-item>
+    </ion-list>
+    <ion-list id="side-menu21-list5">
+      <ion-item color="none" menuClose="" on-click="goToOrganization()" id="side-menu21-list-item22">
+        <ion-icon name="star" item-left></ion-icon>
+        Organization
+      </ion-item>
+    </ion-list>
+    <div class="spacer" style="width:268px;height:124px;" id="side-menu21-spacer3"></div>
+    <button id="side-menu21-button10" ion-button outline color="positive" block href-inappbrowser="https://docs.google.com/document/d/1PepqyUEdgUdI-xcyUOubXNEru1kocOt9OYkO6R03mO8/edit">
+      Help
+    </button>
+    <button id="side-menu21-button8" ion-button color="positive" block menuClose="" on-click="goToTheHunt()">
+      <ion-icon name="log-in"></ion-icon>
+      log out
+    </button>
+    <button id="side-menu21-button6" ion-button icon-only color="positive" style="border-radius:0px 0px 0px 0px;">
+      Help
+    </button>
+  </ion-content>
+</ion-menu>
+
+<ion-nav #mainContent [root]="rootPage"></ion-nav>

@@ -1,0 +1,8 @@
+{
+  "name": "dragon-ionic-test",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular",
+  "id": "8d22a75f"
+}
